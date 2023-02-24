@@ -1,69 +1,23 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">
-      <img src="https://images.vexels.com/media/users/3/253835/isolated/preview/a072bc46acbb577c0a7e207dad3fdf39-cinema-popcorn-color-stroke.png" />
-  </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Messages</a>
-          </li>
-          <li class="nav-item dropdown">
-            <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://kitt.lewagon.com/placeholder/users/ssaunier" />
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" data-turbo-method="delete" href="#">Log out</a>
-            </div>
-          </li>
-          <!--li class="nav-item"-->
-          <!--/li-->
-      </ul>
-    </div>
+<div class="cover mb-4 d-flex align-items-center justify-content-center">
+  <div class="text-center text-white">
+    <h1>Save any kind of movies</h1>
+    <h3 class="typed-js" data-controller="typed-js"></h3>
   </div>
 </div>
-
-
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(http://cdn.shopify.com/s/files/1/0087/2506/9860/collections/1_jfR0trcAPT3udktrFkOebA_1200x1200.jpg?v=1566963161);">
-  <div class="container">
-    <h1>My Movie Watch List</h1>
-    <p> Your favourite movies</p>
+<div class="container py-5">
+  <div class="d-flex align-items-center justify-content-between mb-3">
+    <h3 class="mb-0">My Lists</h3>
+    <%= link_to "Create a movie list", new_list_path, class: "btn btn-flat" %>
+  </div>
+  <div class="row">
+    <% @lists.each do |list| %>
+      <div class="co-12 col-sm-6 col-md-4 mb-3">
+        <%= link_to list_path(list), class:"text-decoration-none" do %>
+          <div class="card-category" data-aos="zoom-in" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= asset_path('list_background.jpg') %>)">
+            <%= list.name %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </div>
-
-
-<div>
-  <h1>Lists</h1>
-</div>
-
-
-<div class="cards">
-  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
-    Breakfast
-  </div>
-
-  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/lunch.jpg)">
-    Lunch
-  </div>
-
-  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/dinner.jpg)">
-    Dinner
-  </div>
-</div>
-
-
-  <% @lists.each do |list| %>
-    <li>
-      <%= link_to list.name, list %>
-    </li>
-  <% end %>
-</ul>
-
-<%= link_to 'New List', new_list_path %>
