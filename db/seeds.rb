@@ -3,7 +3,8 @@ require 'json'
 
 puts "Cleaning up database..."
 Movie.destroy_all
-puts "Database cleaned"
+List.destroy_all
+Bookmark.destroy_all
 
 url = "http://tmdb.lewagon.com/movie/top_rated"
 10.times do |i|
